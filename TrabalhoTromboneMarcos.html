@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tudo sobre Trombone</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f0e8;
+            color: #351b1b;
+        }
+
+        header {
+            background-color: #351515;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+            color: #e7a08b;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #e7a08b;
+        }
+
+        .inicio {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            gap: 40px;
+        }
+
+        .inicio-texto {
+            max-width: 500px;
+        }
+
+        .inicio h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .inicio p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #76504d;
+        }
+
+        .inicio img {
+            width: 45%;
+            border-radius: 15px;
+        }
+
+        .botao {
+            display: inline-block;
+            background-color: #ad3434;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .botao:hover {
+            background-color: #812323;
+        }
+
+        section {
+            padding: 50px 8%;
+        }
+
+        .sobre {
+            background-color: white;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 30px;
+            color: #963333;
+        }
+
+        .sobre p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            color: #76504d;
+        }
+
+        .tipos {
+            text-align: center;
+        }
+
+        .cartoes {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .cartao {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 220px;
+            box-shadow: 0 3px 10px #00000010;
+        }
+
+        .cartao h3 {
+            color: #ad3434;
+        }
+
+        .cartao p {
+            color: #76504d;
+            line-height: 1.6;
+        }
+
+        .fotos {
+            background-color: white;
+            text-align: center;
+        }
+
+        .galeria {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .galeria img {
+            width: 40%;
+            border-radius: 12px;
+        }
+
+        .links {
+            background-color: white;
+        }
+
+        .links li {
+            margin: 15px 0;
+        }
+
+        .links a {
+            color: #ad3434;
+        }
+
+        .contato {
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border: 1px solid #d8b7b0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        button {
+            background-color: #ad3434;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #mensagem {
+            color: #963333;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #351515;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .inicio {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 8%;
+            }
+
+            .inicio img {
+                width: 100%;
+            }
+
+            .inicio h1 {
+                font-size: 34px;
+            }
+
+            .galeria img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>♪ Tudo sobre trombone</h2>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#tipos">Tipos</a>
+            <a href="#fotos">Fotos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <div class="inicio" id="inicio">
+
+        <div class="inicio-texto">
+
+            <h1>Conheça o mundo do trombone.</h1>
+
+            <p>
+                Um instrumento de sopro conhecido por sua sonoridade
+                marcante e sua característica vara deslizante.
+                Descubra como funciona, seus diferentes modelos
+                e sua presença na música.
+            </p>
+
+            <a href="#sobre" class="botao">Conheça mais</a>
+
+        </div>
+
+        <img src="trombone3.jpeg" alt="Músico tocando trombone">
+
+    </div>
+
+    <section class="sobre" id="sobre">
+
+        <h2>Sobre o trombone</h2>
+
+        <p>
+            O trombone é um instrumento musical de sopro pertencente
+            à família dos metais. Seu funcionamento acontece através
+            da vibração dos lábios do músico no bocal, produzindo
+            o som que é amplificado pelo tubo metálico.
+
+            <br><br>
+
+            Uma de suas principais características é a vara deslizante,
+            que permite alterar o comprimento do tubo e produzir
+            diferentes notas musicais. O instrumento possui uma
+            sonoridade forte e marcante, sendo muito utilizado em
+            bandas marciais, orquestras, jazz, pagode e diversos
+            outros estilos musicais.
+        </p>
+
+    </section>
+
+    <section class="tipos" id="tipos">
+
+        <h2>Conheça alguns tipos</h2>
+
+        <p>Existem diferentes modelos de trombone, cada um com suas características.</p>
+
+        <div class="cartoes">
+
+            <div class="cartao">
+                <h3>Trombone de Vara</h3>
+                <p>
+                    É o modelo mais conhecido. Utiliza uma vara
+                    deslizante para alterar as notas musicais
+                    e é muito comum em bandas e orquestras.
+                </p>
+            </div>
+
+            <div class="cartao">
+                <h3>Trombone de Pisto</h3>
+                <p>
+                    Utiliza válvulas para mudar as notas,
+                    funcionando de maneira semelhante
+                    a outros instrumentos de metal.
+                </p>
+            </div>
+
+            <div class="cartao">
+                <h3>Trombone Baixo</h3>
+                <p>
+                    Possui uma sonoridade mais grave e geralmente
+                    é utilizado para executar as notas mais baixas
+                    em grupos musicais.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="fotos" id="fotos">
+
+        <h2>O trombone em destaque</h2>
+
+        <p>Alguns registros meus tocando o instrumento.</p>
+
+        <div class="galeria">
+
+            <img src="trombone1.jpeg" alt="Tocando trombone durante uma apresentação">
+
+            <img src="trombone2.jpeg" alt="Segurando o trombone durante uma apresentação">
+
+        </div>
+
+    </section>
+
+    <section class="links">
+
+        <h2>Explore o mundo da música</h2>
+
+        <p>Confira alguns sites interessantes para quem gosta de música:</p>
+
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/" target="_blank">
+                    YouTube - Vídeos e apresentações musicais
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.spotify.com/" target="_blank">
+                    Spotify - Ouvir músicas
+                </a>
+            </li>
+
+            <li>
+                <a href="https://pt.wikipedia.org/wiki/Trombone" target="_blank">
+                    Wikipedia - História e informações sobre o trombone
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="contato" id="contato">
+
+        <h2>Entre em contato</h2>
+
+        <p>Deixe uma mensagem no formulário abaixo:</p>
+
+        <form id="formContato">
+
+            <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
+
+            <input type="text" name="name" placeholder="Digite seu nome" required>
+
+            <input type="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <textarea name="message" placeholder="Escreva sua mensagem" required></textarea>
+
+            <button type="submit">Enviar mensagem</button>
+
+            <p id="mensagem"></p>
+
+        </form>
+
+        <script>
+            document.getElementById("formContato").addEventListener("submit", async function (event) {
+
+                event.preventDefault();
+
+                const formulario = this;
+                const dados = new FormData(formulario);
+
+                try {
+                    const resposta = await fetch("https://formsubmit.co/ajax/fillipy.1000@gmail.com", {
+                        method: "POST",
+                        body: dados
+                    });
+
+                    if (resposta.ok) {
+                        document.getElementById("mensagem").innerText =
+                            "Formulário enviado com sucesso, muito obrigado pelo contato!";
+
+                        formulario.reset();
+                    } else {
+                        document.getElementById("mensagem").innerText =
+                            "Não foi possível enviar. Tente novamente.";
+                    }
+
+                } catch (erro) {
+                    document.getElementById("mensagem").innerText =
+                        "Erro ao enviar o formulário.";
+                }
+
+            });
+        </script>
+
+    </section>
+
+    <footer>
+
+        <p>Trabalho Avaliativo | Fillipy de Aguiar Rodrigues - IFSul 2026</p>
+
+    </footer>
+
+</body>
+
+</html>
