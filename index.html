@@ -131,6 +131,14 @@
             line-height: 1.6;
         }
 
+        .cartao img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
         .fotos {
             background-color: white;
             text-align: center;
@@ -300,6 +308,8 @@
         <div class="cartoes">
 
             <div class="cartao">
+                <img src="vara.jpg" alt="Trombone de vara">
+
                 <h3>Trombone de Vara</h3>
                 <p>
                     É o modelo mais conhecido. Utiliza uma vara
@@ -309,6 +319,8 @@
             </div>
 
             <div class="cartao">
+                <img src="pisto.jpg" alt="Trombone de pisto">
+
                 <h3>Trombone de Pisto</h3>
                 <p>
                     Utiliza válvulas para mudar as notas,
@@ -318,6 +330,8 @@
             </div>
 
             <div class="cartao">
+                <img src="baixo.jpg" alt="Trombone baixo">
+
                 <h3>Trombone Baixo</h3>
                 <p>
                     Possui uma sonoridade mais grave e geralmente
@@ -379,8 +393,7 @@
         <h2>Entre em contato</h2>
 
         <p>Deixe uma mensagem no formulário abaixo:</p>
-
-        <form id="formContato">
+        <form action="https://formsubmit.co/fillipy.1000@gmail.com" method="POST">
 
             <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
 
@@ -392,41 +405,55 @@
 
             <button type="submit">Enviar mensagem</button>
 
-            <p id="mensagem"></p>
-
         </form>
+
+
+
 
         <script>
             document.getElementById("formContato").addEventListener("submit", async function (event) {
-
                 event.preventDefault();
 
                 const formulario = this;
+                const mensagem = document.getElementById("mensagem");
+
+                mensagem.innerText = "Enviando mensagem...";
+
                 const dados = new FormData(formulario);
 
                 try {
-                    const resposta = await fetch("https://formsubmit.co/ajax/fillipy.1000@gmail.com", {
-                        method: "POST",
-                        body: dados
-                    });
+                    const resposta = await fetch(
+                        "https://formsubmit.co/ajax/fillipy.1000@gmail.com",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Accept": "application/json"
+                            },
+                            body: dados
+                        }
+                    );
 
-                    if (resposta.ok) {
-                        document.getElementById("mensagem").innerText =
+                    const resultado = await resposta.json();
+
+                    if (String(resultado.success) === "true") {
+                        mensagem.innerText =
                             "Formulário enviado com sucesso, muito obrigado pelo contato!";
 
                         formulario.reset();
                     } else {
-                        document.getElementById("mensagem").innerText =
-                            "Não foi possível enviar. Tente novamente.";
+                        mensagem.innerText =
+                            resultado.message || "Não foi possível enviar.";
                     }
 
                 } catch (erro) {
-                    document.getElementById("mensagem").innerText =
-                        "Erro ao enviar o formulário.";
+                    console.error(erro);
+                    mensagem.innerText = "Erro ao conectar com o servidor.";
                 }
-
             });
         </script>
+
+
+
 
     </section>
 
