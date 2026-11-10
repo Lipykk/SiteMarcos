@@ -344,129 +344,71 @@
 
     </section>
 
-    <section class="fotos" id="fotos">
-
-        <h2>O trombone em destaque</h2>
-
-        <p>Alguns registros meus tocando o instrumento.</p>
-
-        <div class="galeria">
-
-            <img src="trombone1.jpeg" alt="Tocando trombone durante uma apresentação">
-
-            <img src="trombone2.jpeg" alt="Segurando o trombone durante uma apresentação">
-
-        </div>
-
-    </section>
-
-    <section class="links">
-
-        <h2>Explore o mundo da música</h2>
-
-        <p>Confira alguns sites interessantes para quem gosta de música:</p>
-
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/" target="_blank">
-                    YouTube - Vídeos e apresentações musicais
-                </a>
-            </li>
-
-            <li>
-                <a href="https://www.spotify.com/" target="_blank">
-                    Spotify - Ouvir músicas
-                </a>
-            </li>
-
-            <li>
-                <a href="https://pt.wikipedia.org/wiki/Trombone" target="_blank">
-                    Wikipedia - História e informações sobre o trombone
-                </a>
-            </li>
-        </ul>
-
-    </section>
-
     <section class="contato" id="contato">
 
-        <h2>Entre em contato</h2>
+    <h2>Entre em contato</h2>
 
-        <p>Deixe uma mensagem no formulário abaixo:</p>
-        <form id="formContato">
+    <p>Deixe uma mensagem no formulário abaixo:</p>
 
-    <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
+    <form id="formContato">
 
-    <input type="text" name="name" placeholder="Digite seu nome" required>
+        <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
 
-    <input type="email" name="email" placeholder="Digite seu e-mail" required>
+        <input type="text" name="name" placeholder="Digite seu nome" required>
 
-    <textarea name="message" placeholder="Escreva sua mensagem" required></textarea>
+        <input type="email" name="email" placeholder="Digite seu e-mail" required>
 
-    <button type="submit" id="botaoEnviar">Enviar mensagem</button>
+        <textarea name="message" placeholder="Escreva sua mensagem" required></textarea>
 
-    <p id="mensagem"></p>
+        <button type="submit" id="botaoEnviar">Enviar mensagem</button>
 
-</form>
+        <p id="mensagem"></p>
 
+    </form>
 
+</section>
 
+<script>
+document.getElementById("formContato").addEventListener("submit", async function(event) {
 
-       <script>
-    document.getElementById("formContato").addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-        event.preventDefault();
+    const formulario = this;
+    const mensagem = document.getElementById("mensagem");
+    const botao = document.getElementById("botaoEnviar");
 
-        const formulario = this;
-        const mensagem = document.getElementById("mensagem");
-        const botao = document.getElementById("botaoEnviar");
+    mensagem.innerText = "Enviando mensagem...";
+    botao.disabled = true;
 
-        mensagem.innerText = "Enviando mensagem...";
-        botao.disabled = true;
-
-        const dados = new FormData(formulario);
-
-        try {
-            const resposta = await fetch(
-                "https://formsubmit.co/ajax/fillipy.1000@gmail.com",
-                {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/json"
-                    },
-                    body: dados
-                }
-            );
-
-            const resultado = await resposta.json();
-
-            if (resposta.ok && String(resultado.success) === "true") {
-
-                mensagem.innerText = "Mensagem enviada, obrigado pelo contato!!";
-
-                formulario.reset();
-
-            } else {
-
-                mensagem.innerText = "Não foi possível enviar a mensagem. Tente novamente.";
-
+    try {
+        const resposta = await fetch(
+            "https://formsubmit.co/ajax/fillipy.1000@gmail.com",
+            {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json"
+                },
+                body: new FormData(formulario)
             }
+        );
 
-        } catch (erro) {
+        const resultado = await resposta.json();
 
-            mensagem.innerText = "Erro ao conectar com o servidor.";
-
+        if (resposta.ok && String(resultado.success) === "true") {
+            mensagem.innerText = "Mensagem enviada, obrigado pelo contato!!";
+            formulario.reset();
+        } else {
+            mensagem.innerText = "Não foi possível enviar a mensagem.";
         }
 
-        botao.disabled = false;
+    } catch (erro) {
+        mensagem.innerText = "Erro de conexão. Tente novamente.";
+    }
 
-    });
+    botao.disabled = false;
+
+});
 </script>
-
-
-
-
-    </section>
 
     <footer>
 
