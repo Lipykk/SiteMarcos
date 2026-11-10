@@ -393,64 +393,75 @@
         <h2>Entre em contato</h2>
 
         <p>Deixe uma mensagem no formulário abaixo:</p>
-        <form action="https://formsubmit.co/fillipy.1000@gmail.com" method="POST">
+        <form id="formContato">
 
-            <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
+    <input type="hidden" name="_subject" value="Nova mensagem - Tudo sobre Trombone">
 
-            <input type="text" name="name" placeholder="Digite seu nome" required>
+    <input type="text" name="name" placeholder="Digite seu nome" required>
 
-            <input type="email" name="email" placeholder="Digite seu e-mail" required>
+    <input type="email" name="email" placeholder="Digite seu e-mail" required>
 
-            <textarea name="message" placeholder="Escreva sua mensagem" required></textarea>
+    <textarea name="message" placeholder="Escreva sua mensagem" required></textarea>
 
-            <button type="submit">Enviar mensagem</button>
+    <button type="submit" id="botaoEnviar">Enviar mensagem</button>
 
-        </form>
+    <p id="mensagem"></p>
+
+</form>
 
 
 
 
-        <script>
-            document.getElementById("formContato").addEventListener("submit", async function (event) {
-                event.preventDefault();
+       <script>
+    document.getElementById("formContato").addEventListener("submit", async function (event) {
 
-                const formulario = this;
-                const mensagem = document.getElementById("mensagem");
+        event.preventDefault();
 
-                mensagem.innerText = "Enviando mensagem...";
+        const formulario = this;
+        const mensagem = document.getElementById("mensagem");
+        const botao = document.getElementById("botaoEnviar");
 
-                const dados = new FormData(formulario);
+        mensagem.innerText = "Enviando mensagem...";
+        botao.disabled = true;
 
-                try {
-                    const resposta = await fetch(
-                        "https://formsubmit.co/ajax/fillipy.1000@gmail.com",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Accept": "application/json"
-                            },
-                            body: dados
-                        }
-                    );
+        const dados = new FormData(formulario);
 
-                    const resultado = await resposta.json();
-
-                    if (String(resultado.success) === "true") {
-                        mensagem.innerText =
-                            "Formulário enviado com sucesso, muito obrigado pelo contato!";
-
-                        formulario.reset();
-                    } else {
-                        mensagem.innerText =
-                            resultado.message || "Não foi possível enviar.";
-                    }
-
-                } catch (erro) {
-                    console.error(erro);
-                    mensagem.innerText = "Erro ao conectar com o servidor.";
+        try {
+            const resposta = await fetch(
+                "https://formsubmit.co/ajax/fillipy.1000@gmail.com",
+                {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json"
+                    },
+                    body: dados
                 }
-            });
-        </script>
+            );
+
+            const resultado = await resposta.json();
+
+            if (resposta.ok && String(resultado.success) === "true") {
+
+                mensagem.innerText = "Mensagem enviada, obrigado pelo contato!!";
+
+                formulario.reset();
+
+            } else {
+
+                mensagem.innerText = "Não foi possível enviar a mensagem. Tente novamente.";
+
+            }
+
+        } catch (erro) {
+
+            mensagem.innerText = "Erro ao conectar com o servidor.";
+
+        }
+
+        botao.disabled = false;
+
+    });
+</script>
 
 
 
